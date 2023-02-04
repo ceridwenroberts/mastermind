@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master-draggable Test</title>
+  <link rel="stylesheet" type="text/css" href="./styles/typography.css">
+  <link rel="stylesheet" href="./styles/index.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+  <!-- ska man ha med "type"? -->
+  <script src="./js/index.js"></script>
+</head>
+
+<body>
+  <h1 id="gameName">Mastermind</h1>
+  <div class="scoreSub">
+    <p class="scoreSubItem current"><span>Score_
+    </span></p>
+    <p class="scoreSubItem high"><span> Highscore_0</span></p>
+  </div>
+</body>
+<div id="container">
+  <div id="codeBoard"></div>
+  <div id="gameBoard">
+    <div id="colorBoard" class="sticky">
+      <button id="openRules" class="clickable">
+        <svg width="100%" height="100%" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_102_67" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="100%"
+            height="100%">
+            <rect width="600" height="600" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_102_67)">
+            <path 
+              d="M265 400C265 366.25 268.025 341.975 274.075 327.175C280.108 312.392 292.916 296.25 312.5 278.75C329.583 263.75 342.6 250.725 351.55 239.675C360.516 228.642 365 216.042 365 201.875C365 184.792 359.275 170.625 347.825 159.375C336.358 148.125 320.416 142.5 300 142.5C278.75 142.5 262.6 148.958 251.55 161.875C240.516 174.792 232.708 187.917 228.125 201.25L163.75 173.75C172.5 147.083 188.541 123.958 211.875 104.375C235.208 84.7917 264.583 75 300 75C343.75 75 377.4 87.1917 400.95 111.575C424.483 135.942 436.25 165.208 436.25 199.375C436.25 220.208 431.775 238.025 422.825 252.825C413.858 267.608 399.791 284.375 380.625 303.125C360.208 322.708 347.816 337.6 343.45 347.8C339.066 358.017 336.875 375.417 336.875 400H265ZM300 550C286.25 550 274.483 545.108 264.7 535.325C254.9 525.525 250 513.75 250 500C250 486.25 254.9 474.475 264.7 464.675C274.483 454.892 286.25 450 300 450C313.75 450 325.525 454.892 335.325 464.675C345.108 474.475 350 486.25 350 500C350 513.75 345.108 525.525 335.325 535.325C325.525 545.108 313.75 550 300 550Z"
+              fill="#1C1B1F" />
+          </g>
+        </svg>
+      </button>
+      <button id="check" disabled><svg id="checkMark" width="100%" height="100%" viewBox="0 0 600 600" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_102_7" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="100%"
+            height="100%">
+            <rect width="600" height="600" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_102_7)">
+            <path d="M238.749 450L96.2494 307.5L131.874 271.875L238.749 378.75L468.124 149.375L503.749 185L238.749 450Z"
+              fill="#530103" />
+          </g>
+        </svg>
+      </button>
+      <button id="clear"><svg width="100%" height="100%" viewBox="0 0 600 600" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_102_31" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="100%"
+            height="100%">
+            <rect width=" 600" height="600" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_102_31)">
+            <path
+              d="M175 475V425H352.5C378.75 425 401.558 416.667 420.925 400C440.308 383.333 450 362.5 450 337.5C450 312.5 440.308 291.667 420.925 275C401.558 258.333 378.75 250 352.5 250H195L260 315L225 350L100 225L225 100L260 135L195 200H352.5C392.917 200 427.608 213.125 456.575 239.375C485.525 265.625 500 298.333 500 337.5C500 376.667 485.525 409.375 456.575 435.625C427.608 461.875 392.917 475 352.5 475H175Z"
+              fill="#1C1B1F" />
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!-- Modals -->
+  <dialog id="introModal" class="modal"><h2>This is Mastermind</h2>
+  <p>Are you?</p>
+  <div id="introBtns">
+  <button class="btnNewGame">Play!</button>
+  <button id="openIntroRules" class="clickable">
+    Rules
+  </button>
+</div>
+  </dialog>
+  <dialog id="rulesModal" class="modal">
+    <h4>How to play</h4>
+    <p>The codebreaker (you) has 10 attempts at breaking a randomly selected code consisting of a series of 4 coloured
+      pegs. Each of the 6 colours may occur a maximum of two 2 times.</p>
+    <h4>Hints</h4>
+    <p>After each attempt you get feedback through red and white hintpegs. A red peg means that there is a peg of the right colour in right place. White means that the pegcolour is in the code, but in the wrong place. The placement of these hints do not indicate which numer it refers to. Even though a red peg means that there is a peg of the right colour in the right place, there will be no hint for an other occurece of the same color in the wrong place.</p>
+
+    <h4>Scoring</h4>
+    <p>Your score is tallied at the end of each round.<br/>
+      <strong>If you break the code </strong><br/>
+      you get one point for each empty row.<br/>
+      <strong>If you do not break the code</strong><br/>and you use all of your 10 guesses without breaking the code, you loose the game.<br/>
+    </p>
+    
+    <!-- <span id="gamesWon">Games won</span>
+    <span id="gamesLost">Games lost</span> -->
+    <button class="button closeRules clickable" id="closeRules">Close</button>
+  </dialog>
+  <!-- <dialog id="lostModal" class="modal" >
+    <span id="score">Score</span>
+    <span class="score" id="gamesWon">Games won</span>
+    <span class="score" id="gamesLost">Games lost</span>
+    <p>Nope, that's not it.<span class="resultMessage">You loose!</span> Play again?</p>
+    <button class="newGame">Yes,<br>please!</button>
+    <button class="endGameLost">No</button>
+    </dialog> -->
+    <dialog id="lostModal" class="modal">
+      <div id="endContainer">
+        <h4>Sorry, you loose.</h4>
+        <p>Play again?</p>
+        <button class="btnNewGame">Yes,<br/>please!</button>
+        <button class="btnEndGame">No</button>
+  </dialog>
+  <dialog id="endModal" class="modal">
+    <div id="endContainer">
+      <h4>You did it, smarty pants!</h4>
+      <p class="current">Your <span>Score_</span></p>
+      <p>Play again?</p>
+      <button class="btnNewGame">Yes,<br/>please!</button>
+      <button class="btnEndGame">No</button>
+      <!-- <h4 id="finalScore"><span class="resultMessage"> points</span></h4>
+      <form>
+        <input type="text" name="username" id="username" placeholder="username">
+      </form>
+      <button type="submit" class="clickable" id="saveScoreBtn" onclick="saveHighScores(event)" disabled>Save</button> -->
+  </dialog>
+
+
+
+</div>
+
+</body>
+
+</html>

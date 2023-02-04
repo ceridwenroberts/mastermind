@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'Montserrat Subrayada Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Montserrat Subrayada Regular'), url('../fonts/montserrat-subrayada-cufonfonts-webfont/MontserratSubrayada-Regular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Montserrat Subrayada Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Montserrat Subrayada Bold'), url('../fonts/montserrat-subrayada-cufonfonts-webfont/MontserratSubrayada-Bold.woff') format('woff');
+}
+
+
+/* 
+html {
+    font-size: 100%;
+    
+}
+
+/*16px*/
+
+body {
+    font-weight: 400;
+    line-height: 1.75;
+    color: #000000;
+}
+
+p {
+    color: #c5ceee;
+    margin-bottom: 1rem;
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 3.052rem;
+}
+
+h1 {
+    font-family: 'Montserrat Subrayada Regular';
+    font-weight: normal;
+    font-size: 42px;
+    /* text-shadow: 0px 0px 4px #f00; */
+    text-shadow: 0px 0px 4px #484e62;
+}
+
+
+h2 {
+    font-size: 2.441rem;
+}
+
+h3 {
+    font-size: 1.953rem;
+}
+
+h4 {
+    font-size: 1.563rem;
+    font-family: 'Montserrat Subrayada Regular';
+    margin-block-end: .5em;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+small,
+.text_small {
+    font-size: 0.8rem;
+}
+
+button {
+    font-family: 'Montserrat Subrayada Regular';
+}
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:400');
+
+html {
+    font-size: 100%;
+}
+
+/*16px*/
+/* 
+body {
+    background: white;
+    font-family: 'Montserrat Subrayada', sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #000000;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 3rem 0 1.38rem;
+    font-family: 'Montserrat Subrayada', sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 3.052rem;
+}
+
+h2 {
+    font-size: 2.441rem;
+}
+
+h3 {
+    font-size: 1.953rem;
+}
+
+h4 {
+    font-size: 1.563rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+small,
+.text_small {
+    font-size: 0.8rem;
+} */
+
+
+
+:root {
+    --bth-text: #1c1b1f;
+    --btn-text: #bc1e1e;
+    --btn-border: border: 2px solid #530103;
+    --hover-dark-blue: #172d69b4;
+
+
+
+}
